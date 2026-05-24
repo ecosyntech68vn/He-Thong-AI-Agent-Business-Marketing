@@ -17,12 +17,13 @@ BANK_NAME    = _env("BANK_NAME", "MB Bank")
 BANK_CODE    = _env("BANK_CODE", "MB")     # mã ngân hàng cho VietQR (MB, VCB, TCB, ACB...)
 ACCOUNT_NAME = _env("ACCOUNT_NAME", "")
 
-# Sản phẩm bán (thêm SKU mới chỉ cần thêm 1 dòng)
+# Sản phẩm bán (ladder 3 tầng — thêm SKU mới chỉ cần thêm 1 dòng)
 PRODUCTS = {
-    "comay":    {"name": "Cỗ Máy Nội Dung (trọn bộ)", "price": 690000},
-    "tripwire": {"name": "Bộ Tăng Tốc — Calendar + 50 prompt", "price": 199000},
+    "combo":   {"name": "Combo Founder Solo (FounderToolkit + Cỗ Máy + Bonus)", "price": 999000},
+    "comay":   {"name": "Cỗ Máy Nội Dung (hệ thống marketing)", "price": 690000},
+    "founder": {"name": "FounderToolkit — Sổ tay GitHub cho Founder", "price": 199000},
 }
-DEFAULT_SKU = "comay"
+DEFAULT_SKU = "combo"
 
 # AI (tùy chọn). Để trống LLM_API_KEY -> bot vẫn chạy, chỉ chưa có AI tư vấn.
 LLM_API_KEY  = _env("LLM_API_KEY")

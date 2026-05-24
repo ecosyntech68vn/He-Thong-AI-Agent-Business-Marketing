@@ -51,8 +51,9 @@ def tg_send_photo(chat_id, photo_url, caption):
 
 def tg_keyboard():
     return {"inline_keyboard": [
-        [{"text": "🛒 Mua Cỗ Máy Nội Dung — 690k", "callback_data": "mua_comay"}],
-        [{"text": "⚡ Bộ Tăng Tốc — 199k", "callback_data": "mua_tripwire"}],
+        [{"text": "⭐ Combo Founder Solo — 999k", "callback_data": "mua_combo"}],
+        [{"text": "🛒 Cỗ Máy Nội Dung — 690k", "callback_data": "mua_comay"}],
+        [{"text": "📘 FounderToolkit — 199k", "callback_data": "mua_founder"}],
         [{"text": "📦 Sản phẩm là gì?", "callback_data": "intro"},
          {"text": "❓ FAQ", "callback_data": "faq"}],
         [{"text": "🧾 Đơn của tôi", "callback_data": "trang_thai"},
@@ -75,9 +76,11 @@ def vnd(n):
     return f"{n:,.0f}đ".replace(",", ".")
 
 # ---------- Static copy ----------
-INTRO = ("<b>Cỗ Máy Nội Dung</b> — hệ thống nội dung tự động cho coach / người bán khóa học, dịch vụ.\n\n"
-         "1 ý tưởng → 5 bài đa nền tảng, lên lịch giờ vàng VN, tự kéo khách về Zalo/Messenger — ~5 giờ/tuần.\n"
-         "Không phải khóa lý thuyết — bộ công cụ chạy sẵn, bê về dùng ngay.")
+INTRO = ("<b>Bộ công cụ Founder Solo</b> — vừa XÂY vừa MARKETING công ty công nghệ một mình bằng AI.\n\n"
+         "• <b>FounderToolkit — 199k</b>: Sổ tay GitHub cho founder không rành code.\n"
+         "• <b>Cỗ Máy Nội Dung — 690k</b>: hệ thống marketing (1 ý tưởng → 5 bài, ~5 giờ/tuần).\n"
+         "• <b>Combo — 999k</b> ⭐: cả 2 + bonus (bài seeding + thư viện prompt). Tiết kiệm nhất.\n\n"
+         "Đây là chính bộ công cụ tôi dùng để vừa xây vừa marketing EcoSynTech một mình.")
 FAQ = ("❓ <b>Hay gặp</b>\n"
        "• Không rành công nghệ vẫn dùng được (prompt copy-paste + AI trợ lý + video).\n"
        "• Không phải khóa học — là hệ thống chạy sẵn.\n"
@@ -208,8 +211,9 @@ def telegram_webhook():
     if str(chat_id) == str(C.ADMIN_CHAT_ID) and text.startswith(("/set_link", "/confirm", "/unmatched", "/stats", "/admin_help")):
         handle_admin(chat_id, text); return jsonify({"ok": True})
     if text == "/start":            handle_start(chat_id, name)
-    elif text in ("/mua", "/mua_comay"): handle_mua(chat_id, "comay")
-    elif text == "/mua_tripwire":   handle_mua(chat_id, "tripwire")
+    elif text in ("/mua", "/mua_combo"): handle_mua(chat_id, "combo")
+    elif text == "/mua_comay":      handle_mua(chat_id, "comay")
+    elif text == "/mua_founder":    handle_mua(chat_id, "founder")
     elif text == "/trang_thai":     handle_trang_thai(chat_id)
     elif text == "/lien_he":        handle_lien_he(chat_id)
     else:
