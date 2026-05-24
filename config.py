@@ -19,9 +19,9 @@ ACCOUNT_NAME = _env("ACCOUNT_NAME", "")
 
 # Sản phẩm bán (ladder 3 tầng — thêm SKU mới chỉ cần thêm 1 dòng)
 PRODUCTS = {
-    "combo":   {"name": "Combo Founder Solo (FounderToolkit + Cỗ Máy + Bonus)", "price": 999000},
-    "comay":   {"name": "Cỗ Máy Nội Dung (hệ thống marketing)", "price": 690000},
-    "founder": {"name": "FounderToolkit — Sổ tay GitHub cho Founder", "price": 199000},
+    "combo":   {"name": "Combo Founder Solo (FounderToolkit + Cỗ Máy + Bonus)", "price": 699000, "list": 999000},
+    "comay":   {"name": "Cỗ Máy Nội Dung (hệ thống marketing)", "price": 599000, "list": 890000},
+    "founder": {"name": "FounderToolkit — Sổ tay GitHub cho Founder", "price": 139000, "list": 199000},
 }
 DEFAULT_SKU = "combo"
 

@@ -51,9 +51,9 @@ def tg_send_photo(chat_id, photo_url, caption):
 
 def tg_keyboard():
     return {"inline_keyboard": [
-        [{"text": "⭐ Combo Founder Solo — 999k", "callback_data": "mua_combo"}],
-        [{"text": "🛒 Cỗ Máy Nội Dung — 690k", "callback_data": "mua_comay"}],
-        [{"text": "📘 FounderToolkit — 199k", "callback_data": "mua_founder"}],
+        [{"text": "⭐ Combo Founder Solo — 699k (gốc 999k)", "callback_data": "mua_combo"}],
+        [{"text": "🛒 Cỗ Máy Nội Dung — 599k (gốc 890k)", "callback_data": "mua_comay"}],
+        [{"text": "📘 FounderToolkit — 139k (gốc 199k)", "callback_data": "mua_founder"}],
         [{"text": "📦 Sản phẩm là gì?", "callback_data": "intro"},
          {"text": "❓ FAQ", "callback_data": "faq"}],
         [{"text": "🧾 Đơn của tôi", "callback_data": "trang_thai"},
@@ -77,9 +77,9 @@ def vnd(n):
 
 # ---------- Static copy ----------
 INTRO = ("<b>Bộ công cụ Founder Solo</b> — vừa XÂY vừa MARKETING công ty công nghệ một mình bằng AI.\n\n"
-         "• <b>FounderToolkit — 199k</b>: Sổ tay GitHub cho founder không rành code.\n"
-         "• <b>Cỗ Máy Nội Dung — 690k</b>: hệ thống marketing (1 ý tưởng → 5 bài, ~5 giờ/tuần).\n"
-         "• <b>Combo — 999k</b> ⭐: cả 2 + bonus (bài seeding + thư viện prompt). Tiết kiệm nhất.\n\n"
+         "• <b>FounderToolkit — <s>199k</s> 139k</b>: Sổ tay GitHub cho founder không rành code.\n"
+         "• <b>Cỗ Máy Nội Dung — <s>890k</s> 599k</b>: hệ thống marketing (1 ý tưởng → 5 bài, ~5 giờ/tuần).\n"
+         "• <b>Combo — <s>999k</s> 699k</b> ⭐: cả 2 + bonus (bài seeding + thư viện prompt). Rẻ hơn mua lẻ, đáng nhất.\n\n"
          "Đây là chính bộ công cụ tôi dùng để vừa xây vừa marketing EcoSynTech một mình.")
 FAQ = ("❓ <b>Hay gặp</b>\n"
        "• Không rành công nghệ vẫn dùng được (prompt copy-paste + AI trợ lý + video).\n"
@@ -100,7 +100,9 @@ def handle_mua(chat_id, sku):
     txn = new_txn()
     db.create_order(txn, chat_id, sku, prod["price"])
     content = f"COMAY {txn}"
-    cap = (f"🛒 <b>{prod['name']}</b> — <b>{vnd(prod['price'])}</b>\n\n"
+    gia = (f"<s>{vnd(prod['list'])}</s> → <b>{vnd(prod['price'])}</b> (ưu đãi mở bán)"
+           if prod.get("list") else f"<b>{vnd(prod['price'])}</b>")
+    cap = (f"🛒 <b>{prod['name']}</b>\n💵 Giá: {gia}\n\n"
            f"Chuyển khoản theo QR, hoặc thủ công:\n"
            f"🏦 {C.BANK_NAME} | STK <b>{C.BANK_ACCOUNT or '[CHƯA CẤU HÌNH]'}</b> | {C.ACCOUNT_NAME}\n"
            f"💵 Số tiền: <b>{vnd(prod['price'])}</b>\n"
@@ -247,10 +249,11 @@ def selftest():
     handle_mua(1, "mua_comay")
     o = db.orders_by_chat(1)[0]; txn = o["txn"]
     assert o["status"] == "pending"
-    st, t2 = process_payment(f"COMAY {txn}", 690000)
+    price = C.PRODUCTS["comay"]["price"]
+    st, t2 = process_payment(f"COMAY {txn}", price)
     assert st == "delivered" and t2 == txn, f"phải giao được, got {st}"
     assert db.get_order(txn)["status"] == "paid"
-    st2, _ = process_payment("MUA TXNZZZZZZ", 690000)
+    st2, _ = process_payment("MUA TXNZZZZZZ", price)
     assert st2 == "no_order"
     st3, _ = process_payment(f"COMAY {new_txn()}", 100)  # không có đơn
     print("app selftest PASS ✓ —", len(out), "actions; deliver+underpaid+unmatched OK")

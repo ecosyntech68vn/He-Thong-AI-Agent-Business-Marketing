@@ -1,6 +1,6 @@
 # Cỗ Máy Nội Dung — Bot Bán Hàng Tự Động (Telegram + Sepay + Zalo + AI)
 
-Bán **Cỗ Máy Nội Dung — 690.000đ** (và Bộ Tăng Tốc 199k) tự động: khách đặt → bot tạo VietQR → khách chuyển khoản → Sepay báo về → **bot tự gửi link sản phẩm**. Tin nhắn tự do được **AI tư vấn**; kết nối cả **Zalo OA** dùng chung AI.
+Bán bộ **Founder Solo** (ladder 3 tầng) tự động: **FounderToolkit ~~199k~~ 139k** · **Cỗ Máy Nội Dung ~~890k~~ 599k** · **Combo ~~999k~~ 699k ⭐**. Khách đặt → bot tạo VietQR → khách chuyển khoản → Sepay báo về → **bot tự gửi link sản phẩm**. Tin nhắn tự do được **AI tư vấn**; kết nối cả **Zalo OA** dùng chung AI.
 
 Kiến trúc kế thừa nền tảng `bot-aithucchien` (Flask webhook + Sepay auto-giao + SQLite).
 
@@ -50,12 +50,13 @@ git push -u origin main
 
 ## E. Set link giao hàng (chat admin với bot)
 ```
-/set_link comay https://drive.google.com/drive/folders/<ID_TRON_BO>
-/set_link tripwire https://drive.google.com/drive/folders/<ID_BO_TANG_TOC>
+/set_link founder https://drive.google.com/drive/folders/<ID_FOUNDERTOOLKIT_199>
+/set_link comay   https://drive.google.com/drive/folders/<ID_CO_MAY_TRON_BO>
+/set_link combo   https://drive.google.com/drive/folders/<ID_COMBO_FOUNDER_SOLO>
 ```
 
 ## F. Lệnh
-- Khách: `/start` · `/mua` (Cỗ Máy 690k) · `/mua_tripwire` (199k) · `/trang_thai` · `/lien_he` · nhắn tự do → AI tư vấn.
+- Khách: `/start` · `/mua` (=`/mua_combo` 699k ⭐) · `/mua_comay` (599k) · `/mua_founder` (139k) · `/trang_thai` · `/lien_he` · nhắn tự do → AI tư vấn.
 - Admin: `/set_link <sku> <url>` · `/confirm <TXN>` (giao thủ công) · `/unmatched` · `/stats` · `/admin_help`.
 
 ## G. Checklist Go-live
