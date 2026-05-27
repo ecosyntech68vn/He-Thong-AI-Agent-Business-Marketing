@@ -125,7 +125,7 @@ def handle_trang_thai(chat_id):
 
 def handle_lien_he(chat_id):
     tg_send(chat_id, "🙋 Em đã ghi nhận, tư vấn viên sẽ liên hệ anh/chị sớm ạ!\n"
-                     "Hoặc nhắn trực tiếp: [THAY Zalo/SĐT của anh].")
+                     "Hoặc nhắn trực tiếp: ☎️ 0985438373 — 📧 thuanktqd.mba@gmail.com.")
     notify_admin(f"Khách cần tư vấn viên — chat {chat_id}")
 
 def deliver(order):
