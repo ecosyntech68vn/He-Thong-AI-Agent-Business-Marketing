@@ -124,7 +124,7 @@ def handle_trang_thai(chat_id):
     tg_send(chat_id, "🧾 <b>Đơn của anh/chị:</b>\n" + "\n".join(lines))
 
 def handle_lien_he(chat_id):
-    tg_send(chat_id, f"🙋 Em là <b>Trợ lý của anh Thuận</b> — nhà sáng lập <b>EcoSynTech Global</b>. Em báo anh Thuận phản hồi sớm ạ!\n\n📞 Liên hệ anh Thuận trực tiếp:\n• Telegram: tg://user?id={C.ADMIN_CHAT_ID}\n• Zalo: https://zalo.me/0985438373\n• ☎️ Gọi/SMS: 0985438373\n• 📧 thuanktqd.mba@gmail.com")
+    tg_send(chat_id, f"🙋 Em là <b>Trợ lý của anh Thuận</b> — nhà sáng lập <b>EcoSynTech Global</b>. Em báo anh Thuận phản hồi sớm ạ!\n\n📞 Liên hệ anh Thuận trực tiếp:\n• Telegram: https://t.me/ThuanFX\n• Zalo: https://zalo.me/0985438373\n• ☎️ Gọi/SMS: 0985438373\n• 📧 thuanktqd.mba@gmail.com")
     notify_admin(f"🔔 Khách cần tư vấn - bấm để chat: tg://user?id={chat_id}")
 
 def deliver(order):
